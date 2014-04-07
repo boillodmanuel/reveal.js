@@ -3,5 +3,5 @@
 	height: 100%;	
 }
 .reveal .slides>section.present {
-	border: 1px solid red;
+	border: 1px dotted black;
 }
