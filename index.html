@@ -46,6 +46,13 @@
 		.reveal .slide-number {
 			position: absolute;
 		}
+		.reveal .footer {
+			position: absolute;	
+			width: 100%;
+			bottom: 15px;
+			text-align: center;
+			font-size: 20px; 
+		}
 		</style>
 	</head>
 
@@ -179,7 +186,19 @@
 
 				}
 
+				/**
+				 * Add footer on each slide
+				 */
+				function addSlideFooter(){
+
+					waklEachSlide(function(slide, indexh, indexv) {
+						createSingletonNode( slide, 'div', 'footer', '&copy; Copyright Zenika');
+					});
+
+				}
+
 				addSlideNumber();
+				addSlideFooter();
 
 			});
 		</script>
