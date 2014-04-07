@@ -41,6 +41,12 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+		<style>
+		.reveal .slide-number {
+			position: absolute;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -87,6 +93,7 @@
 				progress: true,
 				history: true,
 				center: false,
+				slideNumber: false,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
@@ -104,11 +111,77 @@
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
 					// Remote control your reveal.js presentation using a touch device
-					{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+					//{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
 
 				]
 			});
 
+
+			Reveal.addEventListener('ready', function(){
+				'use strict';
+				/**
+				 * Converts the target object to an array.
+				 */
+				function toArray( o ) {
+
+					return Array.prototype.slice.call( o );
+
+				}
+				/**
+				 * Creates an HTML element and returns a reference to it.
+				 * If the element already exists the existing instance will
+				 * be returned.
+				 */
+				function createSingletonNode( container, tagname, classname, innerHTML ) {
+
+					var node = container.querySelector( '.' + classname );
+					if( !node ) {
+						node = document.createElement( tagname );
+						node.classList.add( classname );
+						if( innerHTML !== null ) {
+							node.innerHTML = innerHTML;
+						}
+						container.appendChild( node );
+					}
+					return node;
+
+				}
+
+				/**
+				 * Walk in each slide
+				 */
+				function waklEachSlide(callback) {
+				
+					var HORIZONTAL_SLIDES_SELECTOR = '.reveal .slides>section';
+					var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+					horizontalSlides.forEach( function( horizontalSlide, indexh ) {
+
+						var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) );
+						verticalSlides.forEach( function( verticalSlide, indexv ) {
+							callback(verticalSlide, indexh, indexv);
+						} );
+					} );
+
+				}
+
+				/**
+				 * Add slide number on each slide
+				 */
+				function addSlideNumber(){
+
+					waklEachSlide(function(slide, indexh, indexv) {
+						var indexString = indexh;
+						if( indexv > 0 ) {
+							indexString += ' - ' + indexv;
+						}
+						createSingletonNode( slide, 'div', 'slide-number', indexString);
+					});
+
+				}
+
+				addSlideNumber();
+
+			});
 		</script>
 
 	</body>
