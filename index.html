@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<!--<link rel="stylesheet" href="css/theme/default.css" id="theme">-->
+		<link rel="stylesheet" href="css/zenika/theme.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+				var zenikapdf = document.createElement( 'link' );
+		        zenikapdf.rel = 'stylesheet';
+		        zenikapdf.type = 'text/css';
+		        zenikapdf.href = 'css/zenika/pdf.css';
+		        document.getElementsByTagName( 'head' )[0].appendChild( zenikapdf );
+			}
+			if( window.location.search.match( /edition/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/edition.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<style>
+		.reveal .slide-number {
+			position: absolute;
+		}
+		.reveal .footer {
+			position: absolute;	
+			width: 100%;
+			bottom: 15px;
+			text-align: center;
+			font-size: 20px; 
+		}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+			    <section>
+			        <section>
+			        	<h2>PAGE 1</h2>
+			        	<div>Positionnement libre</div>
+			        </section>
+			        <section>
+			            <h2>PAGE 2</h2>
+			            <div>Positionnement libre</div>
+			            <div>Affichage de 3 fragments</div>
+			            <div class="fragment" style="position: absolute; right: 0; top: 115px; height:40px; width: 400px; text-align: center; vertical-align: middle; border: 1px solid orange; background-color: lightyellow">Texte juste en dessous titre</div>
+			            <div class="fragment" style="position: absolute; right: 0; top: 700px; height:40px; width: 400px; text-align: center; vertical-align: middle; border: 1px solid green; background-color: lightgreen">Texte coin bas-droit</div>
+			            <div  class="fragment" style="position: absolute; right: 0; top: 745px; height:40px; width: 400px; text-align: center; vertical-align: middle; border: 1px solid blue; background-color: lightblue">Texte coin bas-droit</div>
+			        </section>
+			        <section>
+			        	<h2>PAGE 3</h2>
+			        </section>
+			    </section>
+			    <section>
+			        <section>
+			        	<h2>Chapitre 2</h2>
+			        	<div>Page 1</div>
+			        </section>
+			        <section>
+			        	<h2>Chapitre 2</h2>
+			        	<div>Page 2</div>
+			        </section>
+			     </section>
+			</div>
+
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				width: 1122,
+				height: 793,
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				slideNumber: false,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					// Remote control your reveal.js presentation using a touch device
+					//{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+				]
+			});
+
+
+			Reveal.addEventListener('ready', function(){
+				'use strict';
+				/**
+				 * Converts the target object to an array.
+				 */
+				function toArray( o ) {
+
+					return Array.prototype.slice.call( o );
+
+				}
+				/**
+				 * Creates an HTML element and returns a reference to it.
+				 * If the element already exists the existing instance will
+				 * be returned.
+				 */
+				function createSingletonNode( container, tagname, classname, innerHTML ) {
+
+					var node = container.querySelector( '.' + classname );
+					if( !node ) {
+						node = document.createElement( tagname );
+						node.classList.add( classname );
+						if( innerHTML !== null ) {
+							node.innerHTML = innerHTML;
+						}
+						container.appendChild( node );
+					}
+					return node;
+
+				}
+
+				/**
+				 * Walk in each slide
+				 */
+				function waklEachSlide(callback) {
+				
+					var HORIZONTAL_SLIDES_SELECTOR = '.reveal .slides>section';
+					var horizontalSlides = toArray( document.querySelectorAll( HORIZONTAL_SLIDES_SELECTOR ) );
+					horizontalSlides.forEach( function( horizontalSlide, indexh ) {
+
+						var verticalSlides = toArray( horizontalSlide.querySelectorAll( 'section' ) );
+						verticalSlides.forEach( function( verticalSlide, indexv ) {
+							callback(verticalSlide, indexh, indexv);
+						} );
+					} );
+
+				}
+
+				/**
+				 * Add slide number on each slide
+				 */
+				function addSlideNumber(){
+
+					waklEachSlide(function(slide, indexh, indexv) {
+						var indexString = indexh;
+						if( indexv > 0 ) {
+							indexString += ' - ' + indexv;
+						}
+						createSingletonNode( slide, 'div', 'slide-number', indexString);
+					});
+
+				}
+
+				/**
+				 * Add footer on each slide
+				 */
+				function addSlideFooter(){
+
+					waklEachSlide(function(slide, indexh, indexv) {
+						createSingletonNode( slide, 'div', 'footer', '&copy; Copyright Zenika');
+					});
+
+				}
+
+				addSlideNumber();
+				addSlideFooter();
+
+			});
+		</script>
+
+	</body>
+</html>
