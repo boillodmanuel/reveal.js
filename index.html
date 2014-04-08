@@ -15,7 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<!--<link rel="stylesheet" href="css/theme/default.css" id="theme">-->
+		<link rel="stylesheet" href="css/zenika/theme.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -28,6 +29,11 @@
 				link.type = 'text/css';
 				link.href = 'css/print/pdf.css';
 				document.getElementsByTagName( 'head' )[0].appendChild( link );
+				var zenikapdf = document.createElement( 'link' );
+		        zenikapdf.rel = 'stylesheet';
+		        zenikapdf.type = 'text/css';
+		        zenikapdf.href = 'css/zenika/pdf.css';
+		        document.getElementsByTagName( 'head' )[0].appendChild( zenikapdf );
 			}
 			if( window.location.search.match( /edition/gi ) ) {
 				var link = document.createElement( 'link' );
@@ -57,7 +63,7 @@
 	</head>
 
 	<body>
-
+		
 		<div class="reveal">
 
 			<!-- Any section element inside of this container is displayed as a slide -->
@@ -70,8 +76,10 @@
 			        <section>
 			            <h2>PAGE 2</h2>
 			            <div>Positionnement libre</div>
-			            <div class="absolute-element" style="position: absolute; width: 272px; height: 47px; left: 637px; top: 524px;">Texte tout en bas</div>
-			            <div class="absolute-element" style="position: absolute; width: 323px; height: 47px; left: 601px; top: 454px;">Texte en bas à droite</div>
+			            <div>Affichage de 3 fragments</div>
+			            <div class="fragment" style="position: absolute; right: 0; top: 115px; height:40px; width: 400px; text-align: center; vertical-align: middle; border: 1px solid orange; background-color: lightyellow">Texte juste en dessous titre</div>
+			            <div class="fragment" style="position: absolute; right: 0; top: 700px; height:40px; width: 400px; text-align: center; vertical-align: middle; border: 1px solid green; background-color: lightgreen">Texte coin bas-droit</div>
+			            <div  class="fragment" style="position: absolute; right: 0; top: 745px; height:40px; width: 400px; text-align: center; vertical-align: middle; border: 1px solid blue; background-color: lightblue">Texte coin bas-droit</div>
 			        </section>
 			        <section>
 			        	<h2>PAGE 3</h2>
@@ -81,6 +89,10 @@
 			        <section>
 			        	<h2>Chapitre 2</h2>
 			        	<div>Page 1</div>
+			        </section>
+			        <section>
+			        	<h2>Chapitre 2</h2>
+			        	<div>Page 2</div>
 			        </section>
 			     </section>
 			</div>
@@ -96,6 +108,8 @@
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
+				width: 1122,
+				height: 793,
 				controls: true,
 				progress: true,
 				history: true,
