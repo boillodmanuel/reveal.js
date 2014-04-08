@@ -1,0 +1,17 @@
+.reveal .slides {
+  text-align: left; }
+
+.reveal .slides pre > code {
+  font-family: "Inconsolata" !important; }
+
+.reveal .slide-number {
+  display: block; }
+
+.reveal .slide-number{
+	position:fixed;
+	display:block;
+	right:15px;
+	bottom:15px;
+	opacity:.5;
+	z-index:31;
+	font-size:12px}
